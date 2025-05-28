@@ -17,6 +17,7 @@
                 <th class="py-2 px-4 border-b">Nama Produk</th>
                 <th class="py-2 px-4 border-b">Deskripsi Produk</th>
                 <th class="py-2 px-4 border-b">Harga Produk</th>
+                <th class="py-2 px-4 border-b">Tanggal Dibuat</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                 <td class="py-2 px-4 border-b">{{ $item }}</td>
                 <td class="py-2 px-4 border-b">{{ $desc[$index] }}</td>
                 <td class="py-2 px-4 border-b">Rp {{ number_format($harga[$index], 0, ',', '.') }}</td>
+                <td class="py-2 px-4 border-b">{{ $created[$index]}}</td>
             </tr>
             @endforeach
         </tbody>

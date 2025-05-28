@@ -9,13 +9,18 @@ class ListProdukController extends Controller
 {
     public function show()
     {
-        $data = Produk::get();
-        foreach ($data as $produk) {
-             $nama[] = $produk->nama;
-             $desc[] = $produk->deskripsi;
-             $harga[] = $produk->harga;
-        }
-        return view('list_produk', compact('nama','desc','harga'));
+        $produk = Produk::where('harga', '>', 1000000)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
+        foreach ($produk as $p) {
+            $nama[] = $p->nama;
+            $desc[] = $p->deskripsi;
+            $harga[] = $p->harga;
+            $created[] = $p->created_at;
+        }
+
+        return view('list_produk', compact('nama', 'desc', 'harga', 'created'));
     }
 }
+
